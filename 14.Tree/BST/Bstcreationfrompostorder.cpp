@@ -33,7 +33,7 @@ class Stack
 int Stack::topOfstack()
 {
    if(top==-1)
-    return INT_MAX;
+    return INT_MIN;
     return S[top]->data;
 }
 void Stack::push(Node*data)
@@ -60,47 +60,42 @@ void Stack :: display()
 }
 Node* Stack::Pop()
 {
-    Node* x=NULL;
+    //Node* x=NULL;
     if(top==-1)
     cout<<"stack underflow"<<endl;
-    else{
-       x=S[top];
-       top=top-1;
-    }
-    return x;
+    return S[top--];
 }
 class Bst
 {    public :
     
-    void create(int pre[],int n);
-    void preorder(Node*p);
+    void create(int post[],int n);
+    void postorder(Node*p);
 };
-void Bst::create(int pre[],int n)
+void Bst::create(int post[],int n)
 {//if p->data<data logic before inseryion lchild first pushg p in to stack than creat lchild of p
   //if(p->data<data&&data<topstack data than assing p->rchild =t and don't need to push data else p=popo();)
      Node*t=NULL,*p;
-     Stack st(n);int i=0;
+     Stack st(n);int i=n-1;
      //if(n==0) return ;//array is empty;
-      st.display();
      root= new Node();
-     root->data=pre[i++];
+     root->data=post[i--];
      p=root;
-     while(i<n)
+     while(i>=0)
      {
-        if(pre[i]<p->data)
+        if(post[i]>p->data)
         {  
             t=new Node();
-            t->data=pre[i++];
-            p->lchild=t;
+            t->data=post[i--];
+            p->rchild=t;
             st.push(p);
             p=t;
            
         }   
-        else if((pre[i]>p->data)&&pre[i]<(st.topOfstack()))
+        else if((post[i]<p->data)&&post[i]>(st.topOfstack()))
         {     
              t=new Node();
-             t->data=pre[i++]; 
-            p->rchild=t;
+             t->data=post[i--]; 
+            p->lchild=t;
             p=t;
         } 
         else
@@ -110,24 +105,23 @@ void Bst::create(int pre[],int n)
      }
 
 }
-void Bst::preorder(Node*p)
+void Bst::postorder(Node*p)
 {
    
     if(p!=NULL){
-       
+        
          
-        preorder(p->lchild);
-        preorder(p->rchild);cout<<p->data<<" ";
-       
-    }
+    
+        postorder(p->lchild);
+        postorder(p->rchild);
+        cout<<p->data<<" ";
+    }   
 }
 int main()
 {
     Bst b;
-    int a[8]={30,20,10,15,25,40,50,45};
+    int a[8]={15,10,25,20,45,50,40,30};
     b.create(a,8);
-    cout<<"Preoredr value : "<<endl; 
-    b.preorder(root);
-   
-
+    cout<<"Postoredr value : "<<endl; 
+    b.postorder(root);
 }
