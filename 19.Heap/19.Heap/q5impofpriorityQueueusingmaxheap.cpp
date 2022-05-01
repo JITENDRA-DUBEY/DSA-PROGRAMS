@@ -1,4 +1,5 @@
-//jsg Heap Short
+// jsg priority Queue using maxHeap
+// priority Queue means always delete element of heghest priority i.e root element of max heap
 #include<iostream>
 using namespace std;
 void insert(int a[],int n);
@@ -53,8 +54,8 @@ int main()
   {
       cout<<a[i]<<" ";
   }
-  cout<<"\nSoted Array in decending array : \n";
- for(int i=0;i<7;i++)
+  cout<<"priority Queue Deleted element : \n";
+ for(int i=0;i<8;i++)
   {
       cout<<pQ[i]<<" ";
   }
