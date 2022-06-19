@@ -2,7 +2,7 @@
 #include<iostream>
 #define size 10
 using namespace std;
-int Hsh(int key);
+int Hash(int key);
 int Hash(int key)
 {
     return key%size;

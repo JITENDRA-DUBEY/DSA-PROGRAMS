@@ -10,7 +10,8 @@ class Node//Node of Avl tree
 {
     public:
    Node*lchild;
-   int data;int height;
+   int data;
+   int height;
    Node*rchild;
    Node(){lchild=rchild=NULL;}
 };Node*root=NULL;
@@ -190,7 +191,8 @@ Node* Avl:: Deletenode(Node*p,int data)
          q=insucc(p->rchild);
         p->data=q->data;
         p->rchild=Deletenode(p->rchild,q->data);
-    }   p->height=NodeHeight(p);// doubt is it neccesary
+    }  
+     p->height=NodeHeight(p);// doubt is it neccesary
     if(balFactor(p)==2&&balFactor(p->lchild)==1)
            return LLRotation(p);
         else if(balFactor(p)==2&&balFactor(p->lchild)==-1)

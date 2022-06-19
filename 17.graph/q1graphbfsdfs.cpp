@@ -109,9 +109,9 @@ int main()
 
             {0,0,1,1,0,1,1},{0,0,0,0,1,0,0},{0,0,0,0,1,0,0}};
             cout<<"\nBFS search : \n";
-            BFS(G,3,7);
+            BFS(G,1,7);
              cout<<"\nDFS search : \n";
-            DFS(G,4,7);
+            DFS(G,2,7);
     
    
 }

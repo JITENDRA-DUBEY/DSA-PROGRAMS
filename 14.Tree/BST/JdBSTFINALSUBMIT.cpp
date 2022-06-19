@@ -118,8 +118,9 @@ node* BST::search(node*root,int key){
 
 void BST::inorder(node *p){
     if(p){
+          cout<<p->data<<" ";
     inorder(p->lchild);
-    cout<<p->data<<" ";
+  
     inorder(p->rchild);
     }
 }
@@ -157,6 +158,7 @@ int main(){
     t.create(root,30);
      t.create(root,70);
      t.Delete(root,75);
+     cout<<"\nSuccesfull terminated"<<endl;
     t.inorder(root);
 
 }
